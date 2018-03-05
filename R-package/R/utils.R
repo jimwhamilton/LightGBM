@@ -160,7 +160,7 @@ lgb.check.params <- function(params) {
 lgb.check.obj <- function(params, obj) {
   
   # List known objectives in a vector
-  OBJECTIVES <- c("regression", "regression_l1", "regression_l2", "huber", "fair", "poisson", "binary", "lambdarank", "multiclass")
+  OBJECTIVES <- c("regression", "regression_l1", "regression_l2", "huber", "fair", "poisson", "binary", "lambdarank", "multiclass", "tweedie")
   
   # Check whether the objective is empty or not, and take it from params if needed
   if (!is.null(obj)) { params$objective <- obj }
@@ -226,6 +226,7 @@ lgb.check.eval <- function(params, eval) {
         binary = "binary_logloss", # Logloss
         multiclass = "multi_logloss", # Multiclass logloss
         lambdarank = "ndcg", # Normalized discounted cumulative gain
+        tweedie = "tweedie",
         stop("lgb.check.eval: No default metric available for objective ", sQuote(params$objective)) # Unknown objective parameter
       )
       
